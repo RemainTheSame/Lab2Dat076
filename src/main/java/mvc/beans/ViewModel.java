@@ -1,33 +1,43 @@
 package mvc.beans;
 
+import lombok.Getter;
+import lombok.Setter;
 import mvc.model.Model;
 import mvc.model.TodoList;
+import mvc.model.TodoNote;
 
+import javax.swing.text.View;
 import java.util.List;
 
 /**
  * Data for JSP pages (an instance of this class i used in the JSP page)
- * 
+ *
  * ***  NOTHING TO DO HERE ***
- * 
+ *
  * @author hajo
  */
 
 public class ViewModel {
-    
-    // TODO Supply data to JSP pages
+
+    @Getter
+    @Setter
     private TodoList todoList;
+    @Getter
+    @Setter
+    private List<TodoNote>todoNotes;
+
+    public ViewModel(){
+        updateViewList();
+    }
 
     private void updateViewList(){
-        setTodo(Model.INSTANCE.getList());
+        setTodoList(Model.INSTANCE.getList());
+        setTodoNotes(todoList.getNotes());
     }
 
-    public TodoList getTodoList() {
-        updateViewList();
-        return todoList;
+    public TodoNote getById(long id){
+        return todoList.getById(id);
     }
 
-    public void setTodo(TodoList todoList ){
-        this.todoList = todoList;
-    }
+
 }

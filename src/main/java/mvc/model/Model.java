@@ -30,15 +30,31 @@ public enum Model {
     }
 
     public User register(String name, String password, String email) {
-        // TODO
+
+        User user = new User(name, password, email);
+
+        if(getUserRegistry().register(user))
+            return user;
+
         return null;
     }
 
     //Add new note using input String
     public void addToDo(String text){
 
-        getList().add(new TodoNote(text));
+        Long id = Long.valueOf(getList().size())+1;
+        getList().add(new TodoNote(id, text));
     }
 
     // TODO Other methods called by new actions
+
+    //Edits with id
+    public void edit(Long id, String text){
+        getList().edit(id, text);
+    }
+
+    //Deletes with id
+    public void delete(Long id){
+        getList().delete(id);
+    }
 }

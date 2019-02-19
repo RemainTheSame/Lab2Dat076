@@ -10,7 +10,7 @@
     <body>
         <jsp:include page="/partials/header.jsp"/>
         <p>Register</p>
-        <form action="/todo/fc" method="post">
+        <form action="${pageContext.request.contextPath}/fc" method="post">
             <input type="hidden" name="action" value="register" />
             <table>
                 <tr>
@@ -28,7 +28,7 @@
                 </tr>
             </table>
         </form>
-        <a href="/todo"> Cancel </a>
+        <a href="${pageContext.request.contextPath}/todo.jsp"> Cancel </a>
         <jsp:include page="/partials/footer.jsp"/>
     </body>
 

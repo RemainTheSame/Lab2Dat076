@@ -21,12 +21,12 @@
             Done: ${bean.getById(id).done}
         </p>
 
-        <form action="/todo/fc" method="post">
+        <form action="${pageContext.request.contextPath}/fc" method="post">
             <input type="hidden" name="action" value="delete" />
             <input type="hidden" name="id" value="${id}" />
             <input type="submit" name="submit" value="Delete" />
         </form>
-        <a href="/todo/list.jsp"> Cancel</a>
+        <a href="${pageContext.request.contextPath}/list.jsp"> Cancel</a>
         <jsp:include page="/partials/footer.jsp"/>
     </body>
 

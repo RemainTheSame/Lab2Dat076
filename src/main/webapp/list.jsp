@@ -21,13 +21,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="item" items="${bean.todoList}">
-                        <!-- TODO -->
-                        <% //Add cell for each note
 
-                        %>
+                    <c:forEach var="item" items="${bean.todoNotes}">
+
+                        <tr>
+                            <td><a href="details.jsp?id=${item.id}">${item.id}</a></td>
+                            <td>${item.text}</td>
+                            <td>${item.dateTime}</td>
+                            <td>${item.done}</td>
+                            <td><a href="edit.jsp?id=${item.id}">edit</a></td>
+                            <td><a href="delete.jsp?id=${item.id}">delete</a></td>
+                        </tr>
+
                     </c:forEach>
-                  
+
+
                 </tbody>
             </table>
         </div>

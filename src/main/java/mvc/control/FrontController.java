@@ -46,17 +46,42 @@ public class FrontController extends HttpServlet {
                 }
                 break;
             }
+
+            case "register":{
+                String name = req.getParameter("name");
+                String password = req.getParameter("password");
+                String email = req.getParameter("email");
+                Model.INSTANCE.register(name, password, email);
+                resp.sendRedirect("list.jsp");
+                break;
+            }
+
             case "add":{
 
                 String text = req.getParameter("text");
                 Model.INSTANCE.addToDo(text);
-
-
+                resp.sendRedirect("list.jsp");
+                break;
 
             }
+
+            case "update":{
+                Long id = Long.valueOf(req.getParameter("id"));
+                String text = req.getParameter("text");
+                Model.INSTANCE.edit(id, text);
+                resp.sendRedirect("list.jsp");
+                break;
+            }
+
+            case "delete":{
+                Long id = Long.valueOf(req.getParameter("id"));
+                Model.INSTANCE.delete(id);
+                resp.sendRedirect("list.jsp");
+                break;
+            }
+
             default:
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
-// TODO Other POST actions
         }
         // PRG pattern
     }
