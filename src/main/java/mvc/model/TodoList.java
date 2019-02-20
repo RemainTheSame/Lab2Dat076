@@ -17,12 +17,18 @@ import java.util.Objects;
 public class TodoList {
 
     private final List<TodoNote> notes = new ArrayList<>();
+    private Long nrNotes = 1L;
 
     public TodoList() {
         // Test data
+        this.add(new TodoNote(1L, "Äta gröt"));
+        this.add(new TodoNote(2L,  "Rensa sallad"));
+        this.add(new TodoNote(3L, "Jaga älg"));
+        /*
         notes.add(new TodoNote(1L, "Äta gröt"));
         notes.add(new TodoNote(2L, "Rensa sallad"));
         notes.add(new TodoNote(3L, "Jaga älg"));
+        */
     }
 
     public List<TodoNote> getNotes() {
@@ -49,7 +55,9 @@ public class TodoList {
 
     public void add(TodoNote note) {
         if (!notes.contains(note)) {
+
             notes.add(note);
+            nrNotes = ++nrNotes;
         }
     }
 
@@ -73,5 +81,9 @@ public class TodoList {
     public void edit(Long id, String text) {
         TodoNote n = getById(id);
         n.edit(text);
+    }
+
+    public Long getNrNotes(){
+        return nrNotes;
     }
 }

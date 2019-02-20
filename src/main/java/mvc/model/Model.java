@@ -10,6 +10,7 @@ public enum Model {
 
     private final TodoList list = new TodoList();
     private final UserRegistry reg = new UserRegistry();
+    private User current;
 
     public TodoList getList() {
         return list;
@@ -24,6 +25,7 @@ public enum Model {
         User loginUser = new User(null, email, passwd);
 
         if (getUserRegistry().lookup(loginUser) != null){
+            current = loginUser;
             return loginUser;
         }
         return null;
@@ -42,7 +44,7 @@ public enum Model {
     //Add new note using input String
     public void addToDo(String text){
 
-        Long id = Long.valueOf(getList().size())+1;
+        Long id = list.getNrNotes();
         getList().add(new TodoNote(id, text));
     }
 

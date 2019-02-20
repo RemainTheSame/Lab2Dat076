@@ -80,6 +80,12 @@ public class FrontController extends HttpServlet {
                 break;
             }
 
+            case "logout":{
+                req.getSession().setAttribute("user", null);
+                resp.sendRedirect("login.jsp");
+                break;
+            }
+
             default:
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
